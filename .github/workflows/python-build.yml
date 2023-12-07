@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: 'dev'
+    #environment: 'dev'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -15,7 +15,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '14'
-      
-      - run: sudo ls -lrth /home/runner/work/pythonproject/pythonproject/
-      - name: Download a Build Artifact
-        uses: actions/download-artifact@v2.1.1
+      - name: Files
+        run: sudo ls -lrth /home/runner/work/pythonproject/pythonproject/src/
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3.1.3
+        with:
+          name: Python-artifacts
+          path: /home/
+      - name: Artifacts Files
+        run: sudo ls -lrth /home/
