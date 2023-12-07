@@ -5,13 +5,17 @@ on:
     branches:
       - main
 jobs:
-  check-bats-version:
+  build:
     runs-on: ubuntu-latest
     environment: 'dev'
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: SetUp Node
+        uses: actions/setup-node@v3
         with:
           node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
+      
+      - run: sudo ls -lrth /home/runner/work/pythonproject/pythonproject/
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v2.1.1
